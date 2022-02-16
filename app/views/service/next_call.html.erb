@@ -1,0 +1,13 @@
+<% @response_body.first['hits'].each do |recipe| %>
+    <div> <img src=<%= recipe['recipe']['images']['SMALL']['url'] %> alt="recipe">  </div>
+<% end %>
+
+<% @response_body.second['hits'].each_with_index do |recipe, index| %>
+    <% if index < 10 %> 
+    <div> <img src=<%= recipe['recipe']['images']['SMALL']['url'] %> alt="recipe">  </div>
+    <% else %>
+    <%= nil %>
+    <% end %>
+<% end %>
+
+<%= link_to "Click Me", next_call_path(url: @response_body.second['_links']['next']['href']) %>
